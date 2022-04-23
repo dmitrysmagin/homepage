@@ -4,6 +4,7 @@
     "description": "This is a project template for [Elder.js](https://elderguide.com/tech/elderjs/) apps. The template lives at https://github.com/elderjs/template and the Elder.js source is here: https://github.com/elderjs/elderjs",
     "main": "./src/build.js",
     "scripts": {
+        "postinstall": "patch-package",
         "start": "npm run dev",
         "build": "node ./src/cleanPublic.js && npm run build:rollup && npm run build:html",
         "build:rollup": "rollup -c",
@@ -39,6 +40,7 @@
         "glob": "^7.1.6",
         "intersection-observer": "^0.12.0",
         "node-fetch": "^2.6.7",
+        "patch-package": "^6.4.7",
         "polka": "^0.5.2",
         "sass": "^1.49.7",
         "sirv": "^1.0.11",
