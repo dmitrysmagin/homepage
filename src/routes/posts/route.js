@@ -12,7 +12,7 @@ module.exports = {
                 await post.compileHtml();
                 post.slug = 'posts/' + post.slug + '/';
 
-                console.log(post.slug)
+                //console.log(post.slug)
             }
         }
 
