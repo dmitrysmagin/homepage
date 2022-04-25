@@ -1,5 +1,5 @@
 ---
-title: GCW Zero OpenDingux emulation in Qemu
+title: Dingoo A320 OpenDingux emulation in Qemu
 author: Dmitry Smagin
 published: 2015-05-02T00:00:00Z
 tags: Qemu, OpenDingux, Buildroot, Dingoo a320, GCW Zero
@@ -62,12 +62,10 @@ Double buffering and vsync are not supported but
 applications that rely on them will run just fine. If an application
 requests a resolution that is different from 320x240, cirrusfb
 just sets requested resolution as-is without rescaling.  
-- Using initramfs with device tree in tree.txt and
-[mininit](https://github.com/pcercuei/mininit).  
-- Unused hardware is eliminated from defconfig, some other drivers are
-built statically.
-- Kernel command line is hardcoded to `CONFIG_CMDLINE="boot=/dev/sda
-loop0=/boot/rootfs.squashfs root=/dev/loop0 video=cirrusfb:320x240-16@60`
+- Using initramfs with device tree in tree.txt and [mininit](https://github.com/pcercuei/mininit).  
+- Unused hardware is eliminated from defconfig, some other drivers are built statically.
+- Kernel command line is hardcoded to:
+`CONFIG_CMDLINE="boot=/dev/sda loop0=/boot/rootfs.squashfs root=/dev/loop0 video=cirrusfb:320x240-16@60`
 
 After compilation is complete the kernel image is located at current
 directory: ./vmlinux
