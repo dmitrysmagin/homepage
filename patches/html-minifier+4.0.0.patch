@@ -1,0 +1,21 @@
+diff --git a/node_modules/html-minifier/src/htmlminifier.js b/node_modules/html-minifier/src/htmlminifier.js
+index d7efa99..78350a3 100644
+--- a/node_modules/html-minifier/src/htmlminifier.js
++++ b/node_modules/html-minifier/src/htmlminifier.js
+@@ -155,6 +155,7 @@ function isAttributeRedundant(tag, attrName, attrValue, attrs) {
+ // https://mathiasbynens.be/demo/javascript-mime-type
+ // https://developer.mozilla.org/en/docs/Web/HTML/Element/script#attr-type
+ var executableScriptsMimetypes = utils.createMap([
++  'module',
+   'text/javascript',
+   'text/ecmascript',
+   'text/jscript',
+@@ -553,7 +554,7 @@ function normalizeAttr(attr, attrs, tag, options) {
+   if (options.removeRedundantAttributes &&
+     isAttributeRedundant(tag, attrName, attrValue, attrs) ||
+     options.removeScriptTypeAttributes && tag === 'script' &&
+-    attrName === 'type' && isScriptTypeAttribute(attrValue) ||
++    attrName === 'type' && isScriptTypeAttribute(attrValue) && attrValue !== 'module' ||
+     options.removeStyleLinkTypeAttributes && (tag === 'style' || tag === 'link') &&
+     attrName === 'type' && isStyleLinkTypeAttribute(attrValue)) {
+     return;

@@ -2,7 +2,40 @@ const path = require('path');
 const glob = require('glob');
 const fs = require('fs-extra');
 
+const { minify } = require('html-minifier');
+
 const hooks = [
+    {
+        hook: 'html',
+        name: 'compressHtml',
+        description: "Minify html",
+        priority: 1,
+        run: async ({ htmlString }) => {
+            const options = {
+                collapseWhitespace: true,
+                decodeEntities: true,
+                html5: true,
+                ignoreCustomComments: [/^#/],
+                minifyCSS: true,
+                minifyJS: {
+                    //toplevel: true, // gives troubles to multiple instances
+                    parse: {
+                        bare_returns: false,
+                        module: true,
+                    },
+                    compress: true,
+                    mangle: true,            
+                },
+                processConditionalComments: true,
+                removeComments: true,
+                useShortDoctype: true
+            };
+
+            return {
+                htmlString: minify(htmlString, options),
+            };
+       },
+    },
     {
         hook: 'bootstrap',
         name: 'copyAssetsToPublic',
