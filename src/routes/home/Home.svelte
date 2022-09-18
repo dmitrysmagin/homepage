@@ -1,6 +1,6 @@
 <script>
-  import Clock from '../../components/Clock.svelte';
-  import Snake from '../../components/Snake.svelte';
+  import Clock from '@components/Clock.svelte';
+  import Snake from '@components/Snake.svelte';
 </script>
 
 <style>
