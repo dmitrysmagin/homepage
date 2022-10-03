@@ -1,0 +1,105 @@
+diff --git a/node_modules/@elderjs/elderjs/build/partialHydration/hydrateComponents.js b/node_modules/@elderjs/elderjs/build/partialHydration/hydrateComponents.js
+index 3173303..a694877 100644
+--- a/node_modules/@elderjs/elderjs/build/partialHydration/hydrateComponents.js
++++ b/node_modules/@elderjs/elderjs/build/partialHydration/hydrateComponents.js
+@@ -14,6 +14,8 @@ const $$ejs = (par,eager)=>{
+   const prefix = '${prefix}';
+   const initComponent = (target, component) => {
+ 
++    if (!component) return;
++
+     if(!!CustomEvent && target.id){
+       const split = target.id.split('-ejs-');
+       document.dispatchEvent(new CustomEvent('ejs', {
+@@ -174,14 +176,14 @@ exports.default = (page) => {
+             page.headStack.push({
+                 source: component.name,
+                 priority: 50,
+-                string: `<link rel="preload" href="${component.client}" as="script">`,
++                string: `<link rel="preload" href="${component.client}" as="script" crossorigin="anonymous">`,
+                 // string: `<link rel="modulepreload" href="${clientSrcMjs}">`, <-- can be an option for Chrome if browsers don't like this.
+             });
+             if (component.prepared.clientPropsUrl) {
+                 page.headStack.push({
+                     source: component.name,
+                     priority: 49,
+-                    string: `<link rel="preload" href="${component.prepared.clientPropsUrl}" as="fetch">`,
++                    string: `<link rel="preload" href="${component.prepared.clientPropsUrl}" as="fetch" type="application/json" crossorigin="anonymous">`,
+                     // string: `<link rel="modulepreload" href="${clientSrcMjs}">`, <-- can be an option for Chrome if browsers don't like this.
+                 });
+             }
+diff --git a/node_modules/@elderjs/elderjs/build/partialHydration/inlineSvelteComponent.js b/node_modules/@elderjs/elderjs/build/partialHydration/inlineSvelteComponent.js
+index 5eff8c5..8371c71 100644
+--- a/node_modules/@elderjs/elderjs/build/partialHydration/inlineSvelteComponent.js
++++ b/node_modules/@elderjs/elderjs/build/partialHydration/inlineSvelteComponent.js
+@@ -15,7 +15,15 @@ function escapeHtml(text) {
+ }
+ exports.escapeHtml = escapeHtml;
+ function inlinePreprocessedSvelteComponent({ name = '', props = {}, options = '', }) {
+-    const hydrationOptions = options.length > 0 ? { ...defaultHydrationOptions, ...JSON.parse(options) } : defaultHydrationOptions;
++    const parseOptions = () => {
++        try {
++            return new Function(`return ${options}`)();
++        } catch(e) {
++            console.error(`Error in hydrate-options for ${name}`);
++            return {};
++        }
++    };
++    const hydrationOptions = options.length > 0 ? { ...defaultHydrationOptions, ...parseOptions() } : defaultHydrationOptions;
+     const hydrationOptionsString = JSON.stringify(hydrationOptions);
+     const replacementAttrs = {
+         class: '"ejs-component"',
+diff --git a/node_modules/@elderjs/elderjs/build/partialHydration/mountComponentsInHtml.js b/node_modules/@elderjs/elderjs/build/partialHydration/mountComponentsInHtml.js
+index 3e302a0..cd130cf 100644
+--- a/node_modules/@elderjs/elderjs/build/partialHydration/mountComponentsInHtml.js
++++ b/node_modules/@elderjs/elderjs/build/partialHydration/mountComponentsInHtml.js
+@@ -33,6 +33,15 @@ function mountComponentsInHtml({ page, html, hydrateOptions }) {
+         catch (e) {
+             throw new Error(`Failed to JSON.parse props for ${hydrateComponentName} ${exports.replaceSpecialCharacters(match[4])}`);
+         }
++        /*
++        Disable this throw intentionally to allow
++
++        {#if process.env.componentType == 'browser'}
++            <Component prop={} />
++        {:else}
++            <Component hydrate-client={{prop: {}}}>
++        {/if}
++
+         if (hydrateOptions) {
+             throw new Error(`Client side hydrated component is attempting to hydrate another sub component "${hydrateComponentName}." This isn't supported. \n
+              Debug: ${JSON.stringify({
+@@ -43,6 +52,7 @@ function mountComponentsInHtml({ page, html, hydrateOptions }) {
+             })}
+             `);
+         }
++        */
+         const hydratedHtml = svelteComponent_1.default(hydrateComponentName)({
+             page,
+             props: hydrateComponentProps,
+diff --git a/node_modules/@elderjs/elderjs/build/rollup/getRollupConfig.js b/node_modules/@elderjs/elderjs/build/rollup/getRollupConfig.js
+index 24481ec..0d9326c 100644
+--- a/node_modules/@elderjs/elderjs/build/rollup/getRollupConfig.js
++++ b/node_modules/@elderjs/elderjs/build/rollup/getRollupConfig.js
+@@ -85,6 +85,7 @@ function createSSRConfig({ input, output, svelteConfig, replacements = {}, multi
+             plugin_node_resolve_1.nodeResolve({
+                 browser: false,
+                 dedupe: ['svelte'],
++                preferBuiltins: true,
+             }),
+             plugin_commonjs_1.default({ sourceMap: true }),
+             production && rollup_plugin_terser_1.terser(),
+diff --git a/node_modules/@elderjs/elderjs/build/rollup/rollupPlugin.js b/node_modules/@elderjs/elderjs/build/rollup/rollupPlugin.js
+index e7e0ca4..6c9cfed 100644
+--- a/node_modules/@elderjs/elderjs/build/rollup/rollupPlugin.js
++++ b/node_modules/@elderjs/elderjs/build/rollup/rollupPlugin.js
+@@ -316,6 +316,9 @@ const devServer = ({ elderConfig, forceStart = false, }) => {
+                 childProcess.on('exit', (code) => {
+                     if (code !== null) {
+                         console.log(`> Elder.js process exited with code ${code}`);
++                        if (process.env.ALLOW_TERMINATE === 'true') {
++                            process.exit();
++                        }
+                     }
+                 });
+                 childProcess.on('error', (err) => {
