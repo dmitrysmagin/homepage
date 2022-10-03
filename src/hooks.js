@@ -4,6 +4,8 @@ const fs = require('fs-extra');
 
 const { minify } = require('html-minifier');
 
+let gAllRequests;
+
 const hooks = [
     {
         hook: 'html',
@@ -58,5 +60,26 @@ const hooks = [
             });
         },
     },
+    {
+        hook: 'allRequests',
+        name: 'Check allRequests',
+        description: 'Do smth',
+        run: ({ allRequests, routes}) => {
+            gAllRequests = allRequests;
+        }
+    },
+    {
+        hook: 'data',
+        name: 'Insert allRequests into data',
+        description: 'Do smth',
+        run: ({data}) => {
+            return {
+                data: {
+                    ...data,
+                    //allRequests: gAllRequests,
+                }
+            }
+        }
+    }
 ];
 module.exports = hooks;

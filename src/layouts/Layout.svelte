@@ -1,6 +1,7 @@
 <script>
     import '../style.css';
-    export let templateHtml;
+    export let templateHtml, data;
+    //console.dir(data.allRequests, {depth: null})
 </script>
 
 <style>
@@ -26,7 +27,7 @@
     }
 </style>
 
-<div class="container">
+<main class="container">
     {@html templateHtml}
-</div>
+</main>
 <div class="footer">Built with ❤ and <a href="https://elderguide.com/tech/elderjs/">Elder.js</a></div>
