@@ -30,4 +30,5 @@
 <main class="container">
     {@html templateHtml}
 </main>
+
 <div class="footer">Built with ❤ and <a href="https://elderguide.com/tech/elderjs/">Elder.js</a></div>
