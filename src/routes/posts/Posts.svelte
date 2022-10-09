@@ -1,6 +1,6 @@
 <script>
     export let data, request, settings;
-    const post = data.markdown.posts.find(e => e.slug === request.slug);
+    const post = data.markdown.posts.find((e) => e.slug === request.slug);
     let title = post && post.frontmatter ? post.frontmatter.title : 'Table of contents';
     //console.log(post)
 </script>
@@ -60,12 +60,14 @@
             border-collapse: collapse;
         }
 
-        table th, #content table td {
+        table th,
+        #content table td {
             padding: 6px 13px;
             border: 1px solid #c3c8cc;
         }
 
-        table tr:nth-child(2n), table thead tr {
+        table tr:nth-child(2n),
+        table thead tr {
             background-color: #d4d9dd;
         }
     }
@@ -77,21 +79,25 @@
 </svelte:head>
 
 <section id="articles">
-    {#if !post} <!-- Front page with the table of contents -->
+    {#if !post}
+        <!-- Front page with the table of contents -->
         <p>
-            Some of these articles were written for <a href="http://a320.emulate.su">a320.emulate.su</a> in 2012-2016
-            during the boom of cheap Dingux-based handhelds. Unfortunately, the site was abandoned since January 2019,
-            so putting the information here for safety.
+            Some of these articles were written for <a href="http://a320.emulate.su">a320.emulate.su</a> (now defunct) in
+            2012-2016 during the boom of cheap Dingux-based handhelds. Unfortunately, the site was abandoned since January
+            2019, so putting the information here for safety.
         </p>
         <ul>
             {#each data.markdown.posts as item}
-            {@const published = new Date(item.frontmatter.published).toISOString().substring(0, 10)}
-                <li><em>{published}</em> - <a href={'/' + item.slug}>{item.frontmatter.title}</a> - by <em>{item.frontmatter.author}</em></li>
+                {@const published = new Date(item.frontmatter.published).toISOString().substring(0, 10)}
+                <li>
+                    <em>{published}</em> - <a href={'/' + item.slug}>{item.frontmatter.title}</a> - by
+                    <em>{item.frontmatter.author}</em>
+                </li>
             {/each}
         </ul>
     {:else if post.html}
         <!-- TODO: Add header here -->
-        <header></header>
+        <header />
         <article id="content">
             {@html post.html}
         </article>
@@ -99,7 +105,6 @@
         <div>Oops, nothing to show :(</div>
     {/if}
 </section>
-
 
 <!-- Hint: wrap <script> into a directive to trick Svelte to insert it into the html -->
 {#if true}

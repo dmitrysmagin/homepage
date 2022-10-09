@@ -52,20 +52,20 @@ Despite the name 'gcw-qemu_defconfig' it has little to do with GCW Zero hardware
 it's a greatly reduced 'malta_defconfig' with some elements needed for OpenDingux:
 
 - [Patch](https://github.com/dmitrysmagin/linux-gcw0/commit/0a2b8cb9e20354821c4830b1116d0dfb87afa8e1)
-which allows i8042 serial controller to properly enable on emulated
-Malta board. This makes AT standard keyboard work in qemu.
-For some reason this is missing from mainline kernel, see related
-[discussion](http://patchwork.linux-mips.org/patch/6419/).  
+  which allows i8042 serial controller to properly enable on emulated
+  Malta board. This makes AT standard keyboard work in qemu.
+  For some reason this is missing from mainline kernel, see related
+  [discussion](http://patchwork.linux-mips.org/patch/6419/).  
 - [Patch](https://github.com/dmitrysmagin/linux-gcw0/commit/b3570be20f77fad5da056c68ed9379fb59997e40)
-that makes cirrusfb driver behave closer to Dingoo a320 driver.
-Double buffering and vsync are not supported but
-applications that rely on them will run just fine. If an application
-requests a resolution that is different from 320x240, cirrusfb
-just sets requested resolution as-is without rescaling.  
+  that makes cirrusfb driver behave closer to Dingoo a320 driver.
+  Double buffering and vsync are not supported but
+  applications that rely on them will run just fine. If an application
+  requests a resolution that is different from 320x240, cirrusfb
+  just sets requested resolution as-is without rescaling.  
 - Using initramfs with device tree in tree.txt and [mininit](https://github.com/pcercuei/mininit).  
 - Unused hardware is eliminated from defconfig, some other drivers are built statically.
 - Kernel command line is hardcoded to:
-`CONFIG_CMDLINE="boot=/dev/sda loop0=/boot/rootfs.squashfs root=/dev/loop0 video=cirrusfb:320x240-16@60`
+  `CONFIG_CMDLINE="boot=/dev/sda loop0=/boot/rootfs.squashfs root=/dev/loop0 video=cirrusfb:320x240-16@60`
 
 After compilation is complete the kernel image is located at current
 directory: ./vmlinux

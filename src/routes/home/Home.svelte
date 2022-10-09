@@ -1,5 +1,5 @@
 <script>
-  import Clock from '@components/Clock.svelte';
+  //import Clock from '@components/Clock.svelte';
   import Snake from '@components/Snake.svelte';
 </script>
 
@@ -7,9 +7,11 @@
 </style>
 
 <svelte:head>
-  <title>Elder.js Template: Home</title>
+    <title>Home</title>
 </svelte:head>
 
 <Snake />
+<!--
 <Snake />
 <Clock hydrate-client={{}} />
+-->
