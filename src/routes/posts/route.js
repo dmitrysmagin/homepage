@@ -1,6 +1,3 @@
-const path = require('path');
-const glob = require('glob');
-
 module.exports = {
     template: 'Posts.svelte',
     permalink: '/:slug',
@@ -11,13 +8,10 @@ module.exports = {
             if (!post.html) {
                 await post.compileHtml();
                 post.slug = 'posts/' + post.slug + '/';
-
-                //console.log(post.frontmatter.published)
             }
         }
 
         data.markdown.posts.sort((a, b) => new Date(a.frontmatter.published) - new Date(b.frontmatter.published));
-        //console.dir(data, {depth: null})
 
         return data;
     },

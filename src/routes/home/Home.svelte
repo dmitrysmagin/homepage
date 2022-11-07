@@ -1,6 +1,4 @@
 <script>
-  //import Clock from '@components/Clock.svelte';
-  import Snake from '@components/Snake.svelte';
 </script>
 
 <style>
@@ -10,8 +8,4 @@
     <title>Home</title>
 </svelte:head>
 
-<Snake />
-<!--
-<Snake />
-<Clock hydrate-client={{}} />
--->
+<div class="homepage-content"></div>
