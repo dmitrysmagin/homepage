@@ -1,5 +1,6 @@
 <script>
     import Snake from '@components/Snake.svelte';
+    import Opltest from 'src/components/Opltest.svelte';
 
     export let data, request;
     const demos = data.page.allRequests.filter(e => e.id > 1);
@@ -24,5 +25,6 @@
 {:else if request.id === 2}
     <Snake />
 {:else if request.id === 3}
-    <div>TODO</div>
+    <Opltest hydrate-client={{}} />
 {/if}
+
