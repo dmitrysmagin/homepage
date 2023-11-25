@@ -33,13 +33,17 @@
     onMount(() => {
         player = new OPL3.Player(null, { prebuffer: 3000, volume: 4 });
 
-        player.on('progress', function() {
+        /*player.on('progress', function() {
             counter = player.position + 'ms / ' + player.length + 'ms';
         });
 
         player.on('position', function(ms) {
             counter = ms + 'ms / ' + player.length + 'ms';
-        });
+        });*/
+
+        player.on("currentTime", (value) => {
+            counter = `currentFrame: ${value.currentFrame}, currentTime: ${value.currentTime.toFixed(2)} s`;
+        })
     });
 </script>
 
@@ -60,7 +64,7 @@
     <div>
         <label for="fileUpload">Select a file:</label>
         <input type="file" id="fileUpload" name="fileUpload"
-            accept=".raw,.dro,.laa,.mus,.imf"
+            accept=".rad,.raw,.dro,.laa,.mus,.imf"
             on:change={(e) => loadFile(e.target.files)}
         >
     </div>
