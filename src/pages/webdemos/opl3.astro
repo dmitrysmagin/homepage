@@ -1,0 +1,8 @@
+---
+import Layout from "src/layouts/Layout.astro"
+import OpltestPage from "src/components/Opltest.svelte"
+---
+
+<Layout title="Usage of opl3.js library" scripts={[{ src: "/js/opl3.js", id: "opl3" }]}>
+    <OpltestPage client:load />
+</Layout>

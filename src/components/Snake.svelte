@@ -16,9 +16,10 @@
     }
  </style>
 
-<svelte:head>
+<!-- svelte:head is not picked up by Astro correctly, inject scripts inside page.astro component -->
+<!--svelte:head>
     <script src="/js/snake.js"></script>
-</svelte:head>
+</svelte:head-->
 
 <!-- Trick to force static script -->
 <div hash={UNIQUEHASH} style="text-align: center;">

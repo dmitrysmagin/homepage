@@ -1,7 +1,4 @@
 <script>
-    export let data;
-    //console.dir(data, { depth: null });
-    //console.log(data)
 </script>
 
 <style>

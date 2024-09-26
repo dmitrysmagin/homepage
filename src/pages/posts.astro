@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "src/layouts/Layout.astro";
+
+let postsEntries = await getCollection("posts");
+postsEntries.sort((a, b) => (new Date(a.data.published) as any) - (new Date(b.data.published) as any));
+
+
+---
+
+<Layout title="Posts - Table of Contents">
+    <section id="articles">
+        <!-- Front page with the table of contents -->
+        <p>
+            Some of these articles were written for <a href="http://a320.emulate.su">a320.emulate.su</a> (now defunct) in
+            2012-2016 during the boom of cheap Dingux-based handhelds. Unfortunately, the site was abandoned since January
+            2019, so putting the information here for safety.
+        </p>
+        <ul>
+            {postsEntries.map((entry) => (
+                <li>
+                    <time datetime={entry.data.published}>
+                         {new Date(entry.data.published).toISOString().substring(0, 10)}
+                    </time>
+                        -
+                    <a href={`/posts/${entry.slug}`}>{entry.data.title}</a>
+                        - by <em>{entry.data.author}</em>
+                </li>
+            ))}
+        </ul>
+    </section>
+</Layout>

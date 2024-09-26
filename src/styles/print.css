@@ -1,0 +1,177 @@
+@media only print {
+    /* HEADER */
+    header {
+        position: absolute !important;
+    }
+
+    .header-top,
+    .headerBot__menu,
+    .headerBot__btnContact,
+    .menu-button {
+        display: none !important;
+    }
+
+    /* FOOTER */
+    footer,
+    section.homeFooterWrapper {
+        display: none;
+    }
+
+    /* COOKIES */
+    .cookieconsent-component {
+        display: none;
+    }
+
+    /* LANDING PAGES */
+    .heroSectionWrapper,
+    .heroWrapper {
+        background-attachment: scroll !important;
+    }
+
+    .heroSectionWrapper {
+        background-position: center !important;
+    }
+
+    /* HOME */
+    .projectsDiv,
+    .projectsContainer {
+        /* max-width: 800px !important; */
+        break-before: page;
+    }
+
+    .subtitle {
+        font-weight: bold;
+    }
+
+    p.description {
+        max-width: 600px;
+    }
+
+    .blogs {
+        max-width: 800px;
+    }
+    .nums {
+        margin-bottom: 900px;
+    }
+
+    .bottom-part,
+    .seeListBtn,
+    .moreCaseStudies,
+    .meetTheTeamBtn .seeAllBtn,
+    .meetBB,
+    .getInTouch {
+        display: none !important;
+    }
+
+    .video {
+        display: none !important;
+    }
+    .contactUsWrapper {
+        display: none;
+    }
+
+    .numberContainer {
+        break-after: page;
+    }
+
+    .fromTheBlogWrapper,
+    .advantageWrapper,
+    .companiesWrapper {
+        break-before: page;
+    }
+
+    /* DIGITAL TRANSFORMATION */
+    .boostWrapper,
+    .clientsWrapper {
+        break-before: page;
+    }
+    /* BLOGS */
+    .browse-more-wrapper,
+    .signUpWrapper,
+    .alltags-wrapper {
+        display: none !important;
+    }
+
+    /* .blogImg{
+        width: 300px;
+        height: 300px;
+    } */
+
+    .col-8 {
+        width: 100% !important;
+    }
+
+    /* CASE STUDIES */
+    .savepdf-wrapper {
+        display: none !important;
+    }
+
+    /* OTHER  */
+
+    .GetInTouchWrapper,
+    .missionWrapper,
+    .highlightWrapper {
+        break-before: page;
+    }
+
+    /* .headingImg  maybe put back */
+
+    .galleryWrapper,
+    .headingImg {
+        display: none;
+    }
+
+    .imgWrap,
+    .ImgWrap {
+        break-inside: avoid-page;
+    }
+
+    .card {
+        align-items: center !important;
+    }
+
+    .getInTouchWrapper .contactCard {
+        height: auto !important;
+        padding: 20px;
+        page-break-inside: avoid;
+    }
+
+    .getInTouchWrapper .contactCard .profileImage {
+        height: 200px;
+    }
+
+    .getInTouchWrapper .contactCard .content {
+        margin-left: auto;
+        margin-right: auto;
+
+        width: auto;
+        padding: 0;
+        margin-top: 16px;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        text-align: start;
+    }
+
+    .getInTouchWrapper .contactCard .content .email-wrap {
+        align-items: start !important;
+    }
+
+    .carouselWrapper .carousel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .sectionBlockWrapper {
+        break-before: page;
+    }
+
+    .talkToUsWrapper {
+        break-before: avoid;
+    }
+}
+
+@page {
+    size: A4 portrait;
+}

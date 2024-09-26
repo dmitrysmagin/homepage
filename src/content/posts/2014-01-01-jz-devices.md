@@ -11,7 +11,7 @@ Here's the short list of gaming devices that were using some sort of Ingenic JZ4
 
 ## JZ4720:
 
-* [Ben NanoNote](http://en.qi-hardware.com/wiki/Ben_NanoNote)
+* [Ben NanoNote](https://web.archive.org/web/20230911222457/http://en.qi-hardware.com/wiki/Ben_NanoNote)
 
 ## JZ4725B
 
@@ -44,15 +44,15 @@ Here's the short list of gaming devices that were using some sort of Ingenic JZ4
 * [GameGadget](http://web.archive.org/web/20151117212722/http://gamegadget.net/)
 * [Dingoo A320E/A360/A380](http://web.archive.org/web/20141104145735/http://www.dingoo.hk/en_product.asp)
 * [Ritmix RZX-50](https://web.archive.org/web/20191120053910/http://www.ritmixrussia.ru/products/rzx-50)
-* [PAP-KIII](http://www.ylmchina.com/en/product.asp?id=1,1,10) and [proof](http://dingoo-scene.blogspot.ru/2013/06/nick-nillos-review-of-pap-kiii.html) that it really uses JZ4755.
+* [PAP-KIII](https://web.archive.org/web/20200803210617/http://www.ylmchina.com/en/product.asp?id=1,1,10) and [proof](http://dingoo-scene.blogspot.ru/2013/06/nick-nillos-review-of-pap-kiii.html) that it really uses JZ4755.
 
 ## JZ4760:
 
 * [Umido LN430](http://www.umidotech.com/game-machine/game-machine-LN430.html)
-* [PAP-KIIIS](http://www.ylmchina.com/en/product.asp?id=1,1,11,39)
+* [PAP-KIIIS or PAP Gameta II](https://web.archive.org/web/20180407043626/http://www.ylmchina.com/en/product.asp?id=1,1,11)
 
 ## JZ4770:
 
-* [NeoGeo X](http://neogeox.com/)
-* [GCW-Zero](http://www.gcw-zero.com/)
-* [Ainol Novo 7 Paladin](http://www.ainol-novo.com/ainol-novo-7-paladin-first-android-4-0-tablet-pc.html)
+* [NeoGeo X](https://web.archive.org/web/20220517110401/http://www.neogeox.com/)
+* [GCW-Zero](https://web.archive.org/web/20221211175149/http://www.gcw-zero.com/)
+* [Ainol Novo 7 Paladin](https://web.archive.org/web/20191028211707/http://www.ainol-novo.com/ainol-novo-7-paladin-first-android-4-0-tablet-pc.html)

@@ -52,10 +52,10 @@
     });
 </script>
 
-
-<svelte:head>
+<!-- svelte:head is not picked up by Astro correctly, inject scripts inside page.astro component -->
+<!--svelte:head>
     <script id="opl3" type="text/javascript" src="/js/opl3.js"></script>
-</svelte:head>
+</svelte:head-->
 
 <style>
 

@@ -1,0 +1,168 @@
+---
+import "../styles/style.css";
+//import "../styles/print.css";
+
+interface Props {
+    title: string;
+    scripts?: { src: string, id: string }[];
+}
+
+const { title, scripts = [] } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>{title}</title>
+
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+
+        {scripts?.length > 0 &&
+            scripts.map((script: { src: string, id: string }) =>
+                <script id={script.id} type="text/javascript" src={script.src} is:inline />
+            )
+        }
+    </head>
+    <body>
+        <header>
+            <nav >
+                <ul class="menu">
+                    <li><a class="menu-item" href="/">Home</a></li>
+                    <li><a class="menu-item" href="/games/">Games</a></li>
+                    <li><a class="menu-item" href="/posts/">Articles</a></li>
+                    <li><a class="menu-item" href="/webdemos/">Web Demos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="content" class="container">
+            <slot />
+        </main>
+
+        <footer class="footer">Built with fabulous <a href="https://astro.build/">Astro</a> framework</footer>
+
+    </body>
+</html>
+
+<style lang="scss" is:global>
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1rem;
+        overflow: hidden;
+    }
+
+    nav {
+        text-align: center;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            li {
+                display: block;
+                color: #47549a;
+                background-color: #f4f7fb;
+                border-radius: 8px;
+                transition: color 0.5s ease, background-color 0.5s ease;
+                &:hover {
+                    color: #ffffff;
+                    background-color: #7b7b7b;
+                }
+            }
+        }
+
+        a, a:visited, a:link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            padding: 8px 2em;
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+
+
+    .footer {
+        padding: 2rem 0;
+        background: #06395a;
+        padding-top: 2rem;
+        color: #f4f7fb;
+        text-align: center;
+        font-size: 14px;
+    }
+    .footer a {
+        color: #f4f7fb;
+    }
+
+    #content {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #e1e4e8;
+        border-radius: 6px;
+
+        img {
+            max-width: 600px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.1em;
+            font-family: Lato, Helvetica, Arial, sans-serif;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            hyphens: auto;
+            color: #333;
+            text-align: justify;
+        }
+
+        pre {
+            padding: 1em;
+        }
+
+        /*code, pre {
+            background-color: #ddd;
+        }*/
+
+        h1 {
+            font-size: 2.2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: normal;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        table th,
+        #content table td {
+            padding: 6px 13px;
+            border: 1px solid #c3c8cc;
+        }
+
+        table tr:nth-child(2n),
+        table thead tr {
+            background-color: #d4d9dd;
+        }
+    }
+</style>

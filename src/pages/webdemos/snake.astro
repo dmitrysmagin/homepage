@@ -1,0 +1,8 @@
+---
+import Layout from "src/layouts/Layout.astro"
+import SnakePage from "src/components/Snake.svelte";
+---
+
+<Layout title="Games - Snake" scripts={[{ src: "/js/snake.js", id: "snake" }]}>
+    <SnakePage />
+</Layout>
