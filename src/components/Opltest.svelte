@@ -1,6 +1,9 @@
 <script>
+    import TextMatrix from "./TextMatrix.svelte";
     // This component should be hydrated
     import { onMount } from "svelte";
+
+    let textMatrixInstance;
 
     let player, counter = "";
 
@@ -44,6 +47,8 @@
         player.on("currentTime", (value) => {
             counter = `currentFrame: ${value.currentFrame}, currentTime: ${value.currentTime.toFixed(2)} s`;
         })
+
+        textMatrixInstance.printAscii(0, 5, "From outside");
     });
 </script>
 
@@ -74,3 +79,5 @@
         <button on:click={() => player.resume()}>Resume</button>
     </div>
 </div>
+
+<TextMatrix width={36} height={10} bind:this={textMatrixInstance}/>
