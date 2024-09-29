@@ -3,6 +3,8 @@ import Layout from "src/layouts/Layout.astro"
 import OpltestPage from "src/components/Opltest.svelte"
 ---
 
-<Layout title="Usage of opl3.js library" scripts={[{ src: "/js/opl3.js", id: "opl3" }]}>
+<Layout title="Usage of opl3.js library">
+    <script slot="head" id="opl3" type="text/javascript" src="/js/opl3.js" is:inline/>
+
     <OpltestPage client:load />
 </Layout>

@@ -26,6 +26,7 @@ const { title, scripts = [] } = Astro.props;
                 <script id={script.id} type="text/javascript" src={script.src} is:inline />
             )
         }
+        <slot name="head"/>
     </head>
     <body>
         <header>
