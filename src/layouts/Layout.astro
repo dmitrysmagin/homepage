@@ -1,6 +1,7 @@
 ---
-import "../styles/style.css";
-//import "../styles/print.css";
+    import { ClientRouter } from 'astro:transitions';
+    import "../styles/style.css";
+    //import "../styles/print.css";
 
 interface Props {
     title: string;
@@ -21,6 +22,7 @@ const { title } = Astro.props;
         <meta name="generator" content={Astro.generator} />
 
         <slot name="head"/>
+        <ClientRouter />
     </head>
     <body>
         <header>

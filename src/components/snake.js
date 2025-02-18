@@ -2,7 +2,7 @@
     Taken from here:
     https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4
 */
-function game(canvasEl) {
+export default function Game(canvasEl) {
     var canvas = canvasEl || document.getElementById('game');
     var context = canvas.getContext('2d');
 

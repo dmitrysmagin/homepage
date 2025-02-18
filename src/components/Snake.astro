@@ -1,0 +1,65 @@
+---
+---
+
+<div is="snake-game" style="text-align: center;">
+    <p>
+        This game is taken from: <a href="https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4">here</a>.
+    </p>
+    <p>Press button to run js code!</p>
+    <canvas width="400" height="400" id="game" style="display: none;"></canvas>
+    <button id="button_run">RUN</button>
+    <button id="button_stop" style="display: none;">STOP</button>
+</div>
+
+<style>
+    #game {
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -webkit-crisp-edges;
+        image-rendering: pixelated;
+        /*width: 600px;
+        height: 600px;*/
+        border: 2px solid purple;
+        border-radius: 8px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+<script>
+    import Game from "./snake.js";
+
+    class SnakeGame extends window.HTMLDivElement {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            const snake = new Game(this.querySelector('#game'));
+
+            const button_run = this.querySelector('#button_run') as HTMLButtonElement;
+            const button_stop = this.querySelector('#button_stop') as HTMLButtonElement;
+
+            button_run?.addEventListener("click", function() {
+                if (!snake.running) {
+                    snake.run();
+                    button_run.style.display = "none";
+                    button_stop.style.display = "";
+                }
+            });
+
+            button_stop.addEventListener("click", function() {
+                if (snake.running) {
+                    snake.stop();
+                    button_run.style.display = "";
+                    button_stop.style.display = "none";
+                }
+            });
+        }
+
+        disconnectedCallback() {
+        }
+    }
+
+    if (window.customElements.get("snake-game") === undefined)
+        window.customElements.define("snake-game", SnakeGame, { extends: 'div' });
+</script>
