@@ -2,6 +2,9 @@
 import { defineConfig } from 'astro/config';
 
 import svelte from '@astrojs/svelte';
+import sitemap from '@astrojs/sitemap';
+
+import robots from "./src/plugins/robots";
 
 // Note: vite doesn't load .env here by default, need to do it manually
 import { loadEnv } from "vite";
@@ -14,6 +17,8 @@ export default defineConfig({
     site: process.env.HTML_ROOT ?? 'http://localhost:4321/',
     integrations: [
         svelte(),
+        sitemap(),
+        robots(),
     ],
     build: {
         assets: '_astro',
