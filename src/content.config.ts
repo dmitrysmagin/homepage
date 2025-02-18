@@ -1,12 +1,13 @@
 import { z, defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const postsCollection = defineCollection({
-    type: 'content', // v2.5.0 and later
+    loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/posts" }),
     schema: z.object({
         title: z.string(),
         author: z.string(),
-        published: z.string(),
-        tags: z.array(z.string()),
+        published: z.any(),
+        tags: z.string(),
     }),
 });
 

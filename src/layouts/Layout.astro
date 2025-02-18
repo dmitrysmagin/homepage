@@ -4,10 +4,9 @@ import "../styles/style.css";
 
 interface Props {
     title: string;
-    scripts?: { src: string, id: string }[];
 }
 
-const { title, scripts = [] } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,11 +20,6 @@ const { title, scripts = [] } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
 
-        {scripts?.length > 0 &&
-            scripts.map((script: { src: string, id: string }) =>
-                <script id={script.id} type="text/javascript" src={script.src} is:inline />
-            )
-        }
         <slot name="head"/>
     </head>
     <body>

@@ -23,7 +23,7 @@ postsEntries.sort((a, b) => (new Date(a.data.published) as any) - (new Date(b.da
                          {new Date(entry.data.published).toISOString().substring(0, 10)}
                     </time>
                         -
-                    <a href={`/posts/${entry.slug}`}>{entry.data.title}</a>
+                    <a href={`/posts/${entry.id}`}>{entry.data.title}</a>
                         - by <em>{entry.data.author}</em>
                 </li>
             ))}
