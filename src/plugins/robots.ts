@@ -31,8 +31,6 @@ const createPlugin = (): AstroIntegration => {
                 const robotsTxtContent =
                     `User-agent: *\n` +
                     `Disallow: /_astro/\n\n` +
-                    `User-agent: Googlebot\n` +
-                    `Allow: /_astro/\n\n` +
                     `Sitemap: ${root}/sitemap-index.xml\n` +
                     `Host: ${host}`;
 
