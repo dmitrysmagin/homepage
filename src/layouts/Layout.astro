@@ -1,5 +1,5 @@
 ---
-    import { ClientRouter } from 'astro:transitions';
+    //import { ClientRouter } from 'astro:transitions';
     import "../styles/style.css";
     //import "../styles/print.css";
 
@@ -24,7 +24,7 @@ const { title } = Astro.props;
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview: -1">
 
         <slot name="head"/>
-        <ClientRouter />
+        <!--<ClientRouter /> -->
     </head>
     <body>
         <header>
@@ -68,7 +68,7 @@ const { title } = Astro.props;
             li {
                 display: block;
                 color: #47549a;
-                background-color: #f4f7fb;
+                /*background-color: #f4f7fb;*/
                 border-radius: 8px;
                 transition: color 0.5s ease, background-color 0.5s ease;
                 &:hover {
@@ -125,7 +125,7 @@ const { title } = Astro.props;
         p {
             margin-bottom: 1.2em;
             hyphens: auto;
-            color: #333;
+            //color: #333;
             text-align: justify;
         }
 

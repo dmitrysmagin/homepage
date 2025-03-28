@@ -15,7 +15,17 @@
         flex-shrink: 0;
         max-width: 336px; /* 320px for image and + 16 for scroller */
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: hidden;
+
+    }
+
+    .left_panel img {
+        opacity: 1;
+        transition: opacity 0.2s ease-in;
+    }
+
+    .left_panel img:hover {
+        opacity: 0.8;
     }
 
     .left_panel,
@@ -39,6 +49,8 @@
         }
 
         .panel > .left_panel {
+            display: flex;
+            flex-direction: row;
             flex-shrink: 1;
             max-width: unset;
             white-space: nowrap;
@@ -77,8 +89,8 @@
                 move it further.
             </p>
             <p>
-                This remake is based on the x86 PC version with 4-color CGA graphics and beeper sound. All graphics was
-                colorized to 256-color palette by hand using MSX2 version as an example. Later Alexey Pavlov ported this
+                This remake is based on the x86 PC DOS version with 4-color CGA graphics and beeper sound. All graphics was
+                colorized to 256-color palette by hand using MSX2 version reference. Later Alexey Pavlov ported this
                 game to iOS devices and did some gameplay and graphical enhancements as well. He also added sound
                 effects and free music by Mark Braga.<br />
                 Most probably, iOS version is nowhere to be found now, sorry for that.
@@ -111,8 +123,9 @@
             </p>
             <p>
                 <b>Other media</b><br />
-                <a href="http://www.gcw-zero.com/news.php?id=7" target="_blank">Making of 'The Last Mission' remake</a>
-                article on <a href="http://www.gcw-zero.com" target="_blank">www.gcw-zero.com</a><br />
+                <a href="/posts/2014-08-17-making-of-the-last-mission">Making of 'The Last Mission' remake</a>
+                article on <a href="https://web.archive.org/web/20220525193228/http://gcw-zero.com/" target="_blank">www.gcw-zero.com</a>
+                (now defunct)<br />
                 <a href="https://www.mobygames.com/game/last-mission/" target="_blank">Mobygames page</a>
             </p>
         </div>

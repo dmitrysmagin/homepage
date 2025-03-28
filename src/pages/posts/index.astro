@@ -3,9 +3,8 @@ import { getCollection } from "astro:content";
 import Layout from "src/layouts/Layout.astro";
 
 let postsEntries = await getCollection("posts");
-postsEntries.sort((a, b) => (new Date(a.data.published) as any) - (new Date(b.data.published) as any));
 
-
+postsEntries.sort((a, b) => (new Date(b.data.published) as any) - (new Date(a.data.published) as any));
 ---
 
 <Layout title="Posts - Table of Contents">

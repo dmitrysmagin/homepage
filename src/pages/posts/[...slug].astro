@@ -15,5 +15,14 @@ const { Content } = await render(entry);
 ---
 
 <Layout title={`Posts - ${entry.data.title}`}>
-    <Content />
+    <article>
+        <Content />
+    </article>
 </Layout>
+
+<style>
+    article {
+        max-width: 650px;
+        margin: 0 auto;
+    }
+</style>
