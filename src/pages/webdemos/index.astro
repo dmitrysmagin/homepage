@@ -5,11 +5,11 @@ const demos = [
     { id: 1, slug: '/webdemos/clock/', title: 'Animated Clock svg' },
     { id: 2, slug: '/webdemos/snake/', title: 'Snake game' },
     { id: 3, slug: '/webdemos/opl3/', title: 'OPL3 lib usage' },
+    { id: 4, slug: '/webdemos/editorjs/', title: 'Editor.js demo page' },
 ];
 ---
 
 <Layout title="Various web demos">
-    <div>Index</div>
     <ul>
         {demos.map((e) =>
             <li><a href={e.slug}>{e.title}</a></li>
