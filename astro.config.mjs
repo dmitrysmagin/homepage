@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 import svelte from '@astrojs/svelte';
+import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 import robots from "./src/plugins/robots";
@@ -17,6 +18,7 @@ export default defineConfig({
     site: process.env.HTML_ROOT ?? 'http://localhost:4321/',
     integrations: [
         svelte(),
+        react(),
         sitemap(),
         robots(),
     ],
