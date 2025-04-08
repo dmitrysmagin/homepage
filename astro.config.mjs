@@ -6,10 +6,13 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import compress from "@playform/compress";
 
+// Custom integrations
+import purgecss from './src/plugins/purgecss';
 import robots from "./src/plugins/robots";
 
 // Note: vite doesn't load .env here by default, need to do it manually
 import { loadEnv } from "vite";
+
 const env = loadEnv("", process.cwd(), "");
 Object.assign(process.env, env);
 
@@ -22,6 +25,23 @@ export default defineConfig({
         react(),
         sitemap(),
         robots(),
+        purgecss({
+            fontFace: false,
+            css: ["vanilla-cookieconsent/dist/cookieconsent.css"],
+            keyframes: true,
+            content: ["./src/**/*.{svelte,astro,html}"],
+            safelist: { greedy: [/svelte-/] },
+            blocklist: ['usedClass', /^nav-/],
+            extractors: [
+                {
+                    extractor: (content) => [
+                        ...(content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []),
+                        ...(content.match(/(?<=class:)[^=>\/\s]*/g) || []),
+                    ],
+                    extensions: ["svelte", "astro", "html"],
+                },
+            ],
+        }),
         compress({
             CSS: false,
             HTML: {
