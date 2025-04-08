@@ -25,6 +25,7 @@
         "@blocknote/react": "^0.27.2",
         "@blocknote/shadcn": "^0.27.2",
         "@nickreese/seo-lint": "^1.1.2",
+        "@playform/compress": "^0.1.9",
         "@sveltestrap/sveltestrap": "^6.2.7",
         "@types/fs-extra": "^11.0.4",
         "@types/html-to-text": "^9.0.4",

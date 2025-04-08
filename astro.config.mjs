@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 import svelte from '@astrojs/svelte';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import compress from "@playform/compress";
 
 import robots from "./src/plugins/robots";
 
@@ -21,6 +22,34 @@ export default defineConfig({
         react(),
         sitemap(),
         robots(),
+        compress({
+            CSS: false,
+            HTML: {
+                "html-minifier-terser": {
+                    removeAttributeQuotes: false,
+                    collapseWhitespace: true,
+                    decodeEntities: true,
+                    html5: true,
+                    ignoreCustomComments: [/^#/],
+                    minifyCSS: true,
+                    minifyJS: {
+                        parse: {
+                            bare_returns: false,
+                            module: true,
+                        },
+                        compress: true,
+                        mangle: true,
+                        quote_style: 3,
+                    },
+                    processConditionalComments: true,
+                    removeComments: true,
+                    useShortDoctype: true,
+                },
+            },
+            Image: false,
+            JavaScript: false,
+            SVG: false,
+        }),
     ],
     build: {
         assets: '_astro',
