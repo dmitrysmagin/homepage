@@ -1,6 +1,7 @@
 ---
 title: Compiling mips toolchain with Crosstool-ng under Cygwin
 author: Dmitry Smagin
+description: How to compile GCC toolchain using Crosstool-ng scripts on Windows under Cygwin
 published: 2016-02-04T01:00:00Z
 tags: mips, jz47xx, GCW Zero, OpenDingux, Cygwin, Crosstool-NG
 ---

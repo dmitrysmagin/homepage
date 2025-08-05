@@ -1,6 +1,7 @@
 ---
 title: Dingoo A320 OpenDingux emulation in Qemu
 author: Dmitry Smagin
+description: Running OpenDingux on Malta board in QEMU as if it's Dingoo A320
 published: 2015-05-02T00:00:00Z
 tags: Qemu, OpenDingux, Buildroot, Dingoo a320, GCW Zero
 ---

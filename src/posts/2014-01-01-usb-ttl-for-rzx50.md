@@ -1,6 +1,7 @@
 ---
 title: Ritmix RZX-50 - Самостоятельное изготовление переходника USB-UART
 author: Dmitry Smagin
+description: Creating an usb-uart converter for Ritmix RZX-50
 published: 2012-06-29T00:00:00Z
 tags: Ritmix RZX-50, Ingenic JZ4755, Dingux
 ---

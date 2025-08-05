@@ -1,6 +1,7 @@
 ---
 title: Ritmix RZX-50 - Модификация заводской прошивки Dingux от 2014.05.18
 author: Dmitry Smagin
+description: Archive of the last version of Ritmix RZX-50 modified firmware
 published: 2014-10-17T00:00:00Z
 tags: Ritmix RZX-50, Dingux
 ---

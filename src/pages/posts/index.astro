@@ -5,14 +5,15 @@ import Layout from "src/layouts/Layout.astro";
 let postsEntries = await getCollection("posts");
 
 postsEntries.sort((a, b) => (new Date(b.data.published) as any) - (new Date(a.data.published) as any));
+const description = "Various articles saved from now defunct a320.emulate.su witten by me or related to JZ47xx socs"
 ---
 
-<Layout title="Posts - Table of Contents">
+<Layout title="Posts - Table of Contents" {description}>
     <section id="articles">
         <!-- Front page with the table of contents -->
         <p>
             Some of these articles were written for <a href="http://a320.emulate.su">a320.emulate.su</a> (now defunct) in
-            2012-2016 during the boom of cheap Dingux-based handhelds. Unfortunately, the site was abandoned since January
+            2012-2016 during the boom of cheap Dingux-based handhelds. Unfortunately, the site went offline since January
             2019, so putting the information here for safety.
         </p>
         <ul>

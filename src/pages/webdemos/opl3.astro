@@ -1,9 +1,11 @@
 ---
 import Layout from "src/layouts/Layout.astro"
 import OpltestPage from "src/components/Opltest.svelte"
+
+const description = "Working example of how to use modified opl3.js library on the page. Pure js, no wasm or emscripten, audio worklet";
 ---
 
-<Layout title="Usage of opl3.js library">
+<Layout title="Live demo of opl3.js library" {description}>
     <script slot="head" id="opl3" type="text/javascript" src="/js/opl3.js" is:inline/>
 
     <OpltestPage client:load />

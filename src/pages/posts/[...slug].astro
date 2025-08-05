@@ -12,10 +12,16 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const articleInfo = {
+    authorName: entry.data.author,
+    postedAt: entry.data.published,
+    updatedAt: new Date().toISOString()
+}
+const description = entry.data?.description;
 ---
 
-<Layout title={`Posts - ${entry.data.title}`}>
-    <article>
+<Layout title={`Posts - ${entry.data.title}`} {description} {articleInfo}>
+    <article class="container">
         <Content />
     </article>
 </Layout>

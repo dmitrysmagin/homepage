@@ -1,6 +1,7 @@
 ---
 title: Gaming devices based on Ingenic JZ47xx socs
 author: Dmitry Smagin
+description: A list of gaming devices that were based on some Ingenic JZ47xx soc.
 published: 2014-01-01T01:00:00Z
 tags: mips, jz4740, jz4755, jz47xx
 ---

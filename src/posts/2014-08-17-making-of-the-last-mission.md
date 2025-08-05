@@ -1,6 +1,7 @@
 ---
 title: Making of 'The Last Mission' remake
 author: Dmitry Smagin
+description: The history of creating the "Last Mission" remake for PC and GCW-Zero
 published: 2014-08-17T01:00:00Z
 tags: game, retro
 ---

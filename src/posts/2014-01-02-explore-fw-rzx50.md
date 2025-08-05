@@ -1,6 +1,7 @@
 ---
 title: Ritmix RZX-50 - Исследование стандартной прошивки
 author: Dmitry Smagin
+description: Exploring the factory firmware for Ritmix RZX-50 and Dingoo A380
 published: 2014-01-10T00:00:00Z
 tags: Ritmix RZX-50, Ingenic JZ4755
 ---
