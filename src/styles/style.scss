@@ -2,10 +2,9 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 1rem;
-    overflow: hidden;
 }
 
-#content {
+#blog-post {
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 10px;
@@ -14,40 +13,34 @@
     border-radius: 6px;
 
     img {
-        max-width: 600px;
+        width: 600px;
         display: block;
         margin-left: auto;
         margin-right: auto;
-        text-align: center;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        line-height: 1.1em;
-        font-family: Lato, Helvetica, Arial, sans-serif;
-    }
-
-    p {
-        margin-bottom: 1.2em;
-        hyphens: auto;
-        /*color: #333;*/
-        text-align: justify;
+        border-radius: 4px;
     }
 
     pre {
-        padding: 1em;
+        padding: 1rem;
     }
 
-    /*code, pre {
-        background-color: #ddd;
-    }*/
-
-    h1 {
-        font-size: 2.2em;
+    ol, ul, menu {
+        margin-left: 16px;
+        list-style: disc;
     }
 
-    h2 {
-        font-size: 1.5em;
-        font-weight: normal;
+    p, ul, ol, pre {
+        margin-bottom: 1.2rem;
+    }
+
+    hr {
+        all: unset;
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    hr::after {
+        content: '* * *';
     }
 
     table {
@@ -67,4 +60,13 @@
     table thead tr {
         background-color: #d4d9dd;
     }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+p {
+    margin-bottom: 1.2rem;
 }

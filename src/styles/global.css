@@ -1,5 +1,14 @@
-@import "tailwindcss";
+/*@import "tailwindcss";*/
+@layer theme, base, components, utilities;
 
-@theme {
-    --font-display: "Satoshi", "sans-serif";
-}
+@import "tailwindcss/theme.css" layer(theme);
+@import "./preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Customize Preflight */
+/*@layer base {
+    a {
+        color: var(--color-blue-600);
+        text-decoration-line: underline;
+    }    
+}*/

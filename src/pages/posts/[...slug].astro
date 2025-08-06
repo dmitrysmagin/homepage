@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "src/layouts/Layout.astro";
+import "src/styles/md-post.scss";
 
 export async function getStaticPaths() {
     const postsEntries = await getCollection("posts");
@@ -21,14 +22,13 @@ const description = entry.data?.description;
 ---
 
 <Layout title={`Posts - ${entry.data.title}`} {description} {articleInfo}>
-    <article class="container">
+    <article id="blog-post" class="container">
         <Content />
     </article>
 </Layout>
 
 <style>
     article {
-        max-width: 650px;
-        margin: 0 auto;
+        max-width: 750px;
     }
 </style>
