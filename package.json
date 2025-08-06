@@ -27,6 +27,7 @@
         "@nickreese/seo-lint": "^1.1.2",
         "@playform/compress": "^0.1.9",
         "@sveltestrap/sveltestrap": "^6.2.7",
+        "@tailwindcss/vite": "^4.1.11",
         "@types/fs-extra": "^11.0.4",
         "@types/html-to-text": "^9.0.4",
         "@types/react": "^19.1.0",
@@ -45,6 +46,7 @@
         "sade": "^1.8.1",
         "sanitize-html": "^2.13.0",
         "svelte": "^5.37.3",
+        "tailwindcss": "^4.1.11",
         "totalist": "^3.0.1",
         "typescript": "^5.6.2"
     },

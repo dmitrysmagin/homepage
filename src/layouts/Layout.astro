@@ -1,7 +1,7 @@
 ---
     //import { ClientRouter } from 'astro:transitions';
-    import "../styles/style.css";
-    //import "../styles/print.css";
+    import "src/styles/global.css";
+    import "src/styles/style.scss";
 
 interface Props {
     title: string;
@@ -70,7 +70,7 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
     </head>
     <body>
         <header>
-            <nav >
+            <nav class="text-center border-t-1 border-t-gray-300 border-b-1 border-b-gray-300">
                 <ul class="menu">
                     <li><a class="menu-item" href="/">Home</a></li>
                     <li><a class="menu-item" href="/games/">Games</a></li>
@@ -89,18 +89,9 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
     </body>
 </html>
 
-<style lang="scss" is:global>
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 1rem;
-        overflow: hidden;
-    }
-
+<style lang="scss">
     nav {
-        text-align: center;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
+        margin-top: 2rem;
 
         .menu {
             display: flex;
@@ -141,69 +132,5 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
     }
     .footer a {
         color: #f4f7fb;
-    }
-
-    #content {
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #e1e4e8;
-        border-radius: 6px;
-
-        img {
-            max-width: 600px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            line-height: 1.1em;
-            font-family: Lato, Helvetica, Arial, sans-serif;
-        }
-
-        p {
-            margin-bottom: 1.2em;
-            hyphens: auto;
-            //color: #333;
-            text-align: justify;
-        }
-
-        pre {
-            padding: 1em;
-        }
-
-        /*code, pre {
-            background-color: #ddd;
-        }*/
-
-        h1 {
-            font-size: 2.2em;
-        }
-
-        h2 {
-            font-size: 1.5em;
-            font-weight: normal;
-        }
-
-        table {
-            margin-left: auto;
-            margin-right: auto;
-            border-spacing: 0;
-            border-collapse: collapse;
-        }
-
-        table th,
-        #content table td {
-            padding: 6px 13px;
-            border: 1px solid #c3c8cc;
-        }
-
-        table tr:nth-child(2n),
-        table thead tr {
-            background-color: #d4d9dd;
-        }
     }
 </style>

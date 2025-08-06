@@ -10,6 +10,9 @@ import compress from "@playform/compress";
 import purgecss from './src/plugins/purgecss';
 import robots from "./src/plugins/robots";
 
+// Vite plugins
+import tailwindcss from "@tailwindcss/vite";
+
 // Note: vite doesn't load .env here by default, need to do it manually
 import { loadEnv } from "vite";
 
@@ -82,5 +85,6 @@ export default defineConfig({
         build: {
             assetsInlineLimit: 4096
         },
+        plugins: [ tailwindcss() ],
     }
 });
