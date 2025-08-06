@@ -32,6 +32,23 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
             color-[#47549a] rounded-lg transition-colors duration-0.5s ease-in;
     }*/
 
+    $header-height: 96px;
+
+    .header-container {
+        position: relative;
+        height: $header-height;
+
+        .header {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: $header-height;
+            z-index: 1000;
+            background-color: whitesmoke;
+        }
+    }
+
     nav {
         .menu {
             li {
@@ -116,15 +133,17 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
         <!--<ClientRouter /> -->
     </head>
     <body>
-        <header>
-            <nav class="mt-[2rem] text-center border-t-1 border-t-gray-300 border-b-1 border-b-gray-300">
-                <ul class="menu flex flex-row justify-center gap-6">
-                    <li><a class="menu-item" href="/">Home</a></li>
-                    <li><a class="menu-item" href="/games/">Games</a></li>
-                    <li><a class="menu-item" href="/posts/">Articles</a></li>
-                    <li><a class="menu-item" href="/webdemos/">Web Demos</a></li>
-                </ul>
-            </nav>
+        <header class="header-container">
+            <div class="header pt-[2rem] pb-4">
+                <nav class="text-center border-t-1 border-t-gray-300 border-b-1 border-b-gray-300">
+                    <ul class="menu flex flex-row justify-center gap-6">
+                        <li><a class="menu-item" href="/">Home</a></li>
+                        <li><a class="menu-item" href="/games/">Games</a></li>
+                        <li><a class="menu-item" href="/posts/">Articles</a></li>
+                        <li><a class="menu-item" href="/webdemos/">Web Demos</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
 
         <main id="content" class="container">
