@@ -11,9 +11,11 @@ const demos = [
 ---
 
 <Layout title="Web demos and code examples" description="Random code snippets I'd like to test on the site; Testing ground for Astro.build and Svelte">
-    <ul>
-        {demos.map((e) =>
-            <li><a href={e.slug}>{e.title}</a></li>
-        )}
-    </ul>
+    <section class="max-w-3xl mx-auto">
+        <ul>
+            {demos.map((e) =>
+                <li><a href={e.slug}>{e.title}</a></li>
+            )}
+        </ul>
+    </section>
 </Layout>
