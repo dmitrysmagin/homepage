@@ -1,7 +1,7 @@
 ---
-    //import { ClientRouter } from 'astro:transitions';
-    import "src/styles/global.css";
-    import "src/styles/style.scss";
+import HeaderMenu from "src/components/HeaderMenu.astro";
+import "src/styles/global.css";
+import "src/styles/style.scss";
 
 interface Props {
     title: string;
@@ -22,70 +22,6 @@ const canonicalURL = Astro.url.origin + Astro.url.pathname;
 const article_published_time = articleInfo ? new Date(articleInfo?.postedAt || "").toISOString() : "";
 const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "").toISOString() : "";
 ---
-
-<style lang="scss">
-    @reference "src/styles/global.css";
-
-    /*.list-item {
-        @apply
-            text-[#47549a] rounded-lg transition-colors duration-1 ease-in;
-    }*/
-
-    $header-height: 96px;
-
-    .header-container {
-        position: relative;
-        height: $header-height;
-
-        .header {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: $header-height;
-            z-index: 1000;
-            background-color: whitesmoke;
-        }
-    }
-
-    nav {
-        .menu {
-            li {
-                @apply text-[#47549a] hover:text-[#fff] hover:bg-[#7b7b7b] rounded-lg transition-colors duration-[0.5s] ease-in;
-
-                //color: #47549a;
-                //border-radius: 8px;
-                //transition: color 0.5s ease, background-color 0.5s ease;
-                &:hover {
-                    //color: #ffffff;
-                    //background-color: #7b7b7b;
-                }
-            }
-        }
-
-        a, a:visited, a:link {
-            display: block;
-            color: inherit;
-            text-decoration: none;
-            padding: 8px 2em;
-            cursor: pointer;
-            user-select: none;
-        }
-    }
-
-
-    .footer {
-        padding: 2rem 0;
-        background: #06395a;
-        padding-top: 2rem;
-        color: #f4f7fb;
-        text-align: center;
-        font-size: 14px;
-    }
-    .footer a {
-        color: #f4f7fb;
-    }
-</style>
 
 <!doctype html>
 <html lang="en">
@@ -121,7 +57,7 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
             <meta property="og:type" content="website" />
         )}
 
-        <meta property="og:site_name" content="Dmitry's Smagin personal site" />
+        <meta property="og:site_name" content="Dmitry Smagin personal site" />
 
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -130,28 +66,20 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview: -1">
 
         <slot name="head"/>
-        <!--<ClientRouter /> -->
     </head>
     <body>
-        <header class="header-container">
-            <div class="header pt-[2rem] pb-4">
-                <nav class="text-center border-t-1 border-t-gray-300 border-b-1 border-b-gray-300">
-                    <ul class="menu flex flex-row justify-center gap-6">
-                        <li><a class="menu-item" href="/">Home</a></li>
-                        <li><a class="menu-item" href="/games/">Games</a></li>
-                        <li><a class="menu-item" href="/posts/">Articles</a></li>
-                        <li><a class="menu-item" href="/webdemos/">Web Demos</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <HeaderMenu />
 
-        <main id="content" class="container mx-auto">
+        <main class="container mx-auto">
             <slot />
         </main>
 
-        <footer class="footer">Built with fabulous <a href="https://astro.build/">Astro</a> framework</footer>
+        <footer class="py-5 mt-4 text-center text-[#f4f7fb] bg-[#06395a]">
+            Built with fabulous <a class="text-inherit" href="https://astro.build/">Astro</a> framework
+        </footer>
 
     </body>
 </html>
 
+<style>
+</style>
