@@ -25,11 +25,10 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
 
 <style lang="scss">
     @reference "src/styles/global.css";
-    //@reference "tailwindcss";
 
     /*.list-item {
         @apply
-            color-[#47549a] rounded-lg transition-colors duration-0.5s ease-in;
+            text-[#47549a] rounded-lg transition-colors duration-1 ease-in;
     }*/
 
     $header-height: 96px;
@@ -52,13 +51,14 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
     nav {
         .menu {
             li {
-                @apply text-lg rounded-lg;
-                color: #47549a;
-                border-radius: 8px;
-                transition: color 0.5s ease, background-color 0.5s ease;
+                @apply text-[#47549a] hover:text-[#fff] hover:bg-[#7b7b7b] rounded-lg transition-colors duration-[0.5s] ease-in;
+
+                //color: #47549a;
+                //border-radius: 8px;
+                //transition: color 0.5s ease, background-color 0.5s ease;
                 &:hover {
-                    color: #ffffff;
-                    background-color: #7b7b7b;
+                    //color: #ffffff;
+                    //background-color: #7b7b7b;
                 }
             }
         }
@@ -146,7 +146,7 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
             </div>
         </header>
 
-        <main id="content" class="container">
+        <main id="content" class="container mx-auto">
             <slot />
         </main>
 

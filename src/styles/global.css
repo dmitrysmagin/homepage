@@ -5,10 +5,3 @@
 @import "./preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 
-/* Customize Preflight */
-/*@layer base {
-    a {
-        color: var(--color-blue-600);
-        text-decoration-line: underline;
-    }    
-}*/
