@@ -19,10 +19,13 @@ import { loadEnv } from "vite";
 const env = loadEnv("", process.cwd(), "");
 Object.assign(process.env, env);
 
+const server_port = +(process.env.SERVER_PORT || "") || 4321;
+
 // https://astro.build/config
 export default defineConfig({
     //trailingSlash: "always",
-    site: process.env.HTML_ROOT ?? 'http://localhost:4321/',
+    site: process.env.HTML_ROOT ?? `http://localhost:${server_port}/`,
+    server: { port: server_port, host: true },
     integrations: [
         svelte(),
         react(),
