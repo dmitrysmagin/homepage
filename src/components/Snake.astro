@@ -1,7 +1,7 @@
 ---
 ---
 
-<div is="snake-game" style="text-align: center;">
+<snake-game class="block text-center">
     <p>
         This game is taken from: <a href="https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4">here</a>.
     </p>
@@ -9,7 +9,7 @@
     <canvas width="400" height="400" id="game" style="display: none;"></canvas>
     <button id="button_run">RUN</button>
     <button id="button_stop" style="display: none;">STOP</button>
-</div>
+</snake-game>
 
 <style>
     #game {
@@ -28,7 +28,7 @@
 <script>
     import Game from "./snake.js";
 
-    class SnakeGame extends window.HTMLDivElement {
+    class SnakeGame extends HTMLElement {
         constructor() {
             super();
         }
@@ -61,5 +61,5 @@
     }
 
     if (window.customElements.get("snake-game") === undefined)
-        window.customElements.define("snake-game", SnakeGame, { extends: 'div' });
+        window.customElements.define("snake-game", SnakeGame);
 </script>
