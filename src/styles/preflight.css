@@ -7,15 +7,15 @@
 *,
 ::after,
 ::before,
-::backdrop/*,
-::file-selector-button*/ {
+::backdrop,
+::file-selector-button {
     box-sizing: border-box;
     /* 1 */
     margin: 0;
     /* 2 */
     padding: 0;
     /* 2 */
-    /*border: 0 solid;*/
+    border: 0 solid;
     /* 3 */
 }
 
@@ -97,11 +97,11 @@ h6 {
   Reset links to optimize for opt-in styling instead of opt-out.
 */
 
-/*a {
+a {
     color: inherit;
     -webkit-text-decoration: inherit;
     text-decoration: inherit;
-}*/
+}
 
 /*
   Add the correct font weight in Edge and Safari.
@@ -259,8 +259,8 @@ button,
 input,
 select,
 optgroup,
-textarea/*,
-::file-selector-button*/ {
+textarea,
+::file-selector-button {
     font: inherit;
     /* 1 */
     font-feature-settings: inherit;
@@ -299,9 +299,9 @@ textarea/*,
   Restore space after button.
 */
 
-/*::file-selector-button {
+::file-selector-button {
     margin-inline-end: 4px;
-}*/
+}
 
 /*
   Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
@@ -395,8 +395,8 @@ textarea {
 */
 
 button,
-input:where([type='button'], [type='reset'], [type='submit'])/*,
-::file-selector-button*/ {
+input:where([type='button'], [type='reset'], [type='submit']),
+::file-selector-button {
     appearance: button;
 }
 

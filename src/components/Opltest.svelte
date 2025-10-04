@@ -1,13 +1,37 @@
-<script>
+<script lang="ts">
+    import {
+        Button,
+        ButtonGroup,
+        Card,
+        Dropdown,
+        DropdownItem,
+        DropdownDivider,
+        DropdownHeader
+    } from "flowbite-svelte";
+    import {
+        ChevronDownOutline,
+        PlayOutline,
+        PauseOutline,
+        StopOutline,
+    } from "flowbite-svelte-icons";
+
     import TextMatrix from "./TextMatrix.svelte";
     // This component should be hydrated
     import { onMount } from "svelte";
 
-    let textMatrixInstance;
+    let textMatrixInstance: any;
 
-    let player, counter = "";
+    let player: any = $state(null);
+    let counter = $state("");
+    let isOpen = $state(false);
 
-    function FileToArrayBuffer(file) {
+    const fileOptions = [
+        { label: "title.raw", value: "/music/title.raw" },
+        { label: "aditup_1.rad", value: "/music/aditup_1.rad" },
+        { label: "aditup_1.rad", value: "/music/aditup_2.rad" },
+    ];
+
+    function FileToArrayBuffer(file: File): Promise<ArrayBuffer> {
         const fileReader = new FileReader();
 
         return new Promise((resolve, reject) => {
@@ -17,14 +41,14 @@
             };
 
             fileReader.onload = () => {
-                resolve(fileReader.result);
+                resolve(fileReader.result as ArrayBuffer);
             };
 
             fileReader.readAsArrayBuffer(file);
         });
     }
 
-    async function loadFile(files) {
+    async function loadFile(files: FileList) {
         if (files instanceof FileList && files.length) {
             var file = files[0];
             var data = await FileToArrayBuffer(file);
@@ -33,8 +57,21 @@
         }
     }
 
+    async function downloadBinaryFromUrl(url: string): Promise<ArrayBuffer> {
+        const response = await fetch(url);
+        const arrayBuffer = await response.arrayBuffer();
+
+        return arrayBuffer
+    }
+
+    async function loadAndPlay(url: string) {
+        const data = await downloadBinaryFromUrl(url);
+
+        player.play(data);
+    }
+
     onMount(() => {
-        player = new OPL3.Player(null, { prebuffer: 3000, volume: 4 });
+        player = new (window as any).OPL3.Player(null, { prebuffer: 3000, volume: 4 });
 
         /*player.on('progress', function() {
             counter = player.position + 'ms / ' + player.length + 'ms';
@@ -44,11 +81,11 @@
             counter = ms + 'ms / ' + player.length + 'ms';
         });*/
 
-        player.on("currentTime", (value) => {
+        player.on("currentTime", (value: any) => {
             counter = `currentFrame: ${value.currentFrame}, currentTime: ${value.currentTime.toFixed(2)} s`;
         })
 
-        textMatrixInstance.printAscii(0, 5, "From outside");
+        //textMatrixInstance.printAscii(0, 5, "From outside");
     });
 </script>
 
@@ -58,26 +95,46 @@
 </svelte:head-->
 
 <style>
-
+    a {
+        color: blue;
+        text-decoration: underline;
+    }
 </style>
 
-
-<div>
-    <h2>OPL3 emulation test</h2>
-    <p>This is a demo of <a href="https://github.com/doomjs/opl3">Doomjs's OPL3 emulation engine.</a></p>
-    <div>{counter}</div>
+<section class="max-w-3xl mx-auto d-flex flex-row">
     <div>
-        <label for="fileUpload">Select a file:</label>
-        <input type="file" id="fileUpload" name="fileUpload"
-            accept=".rad,.raw,.dro,.laa,.mus,.imf"
-            on:change={(e) => loadFile(e.target.files)}
-        >
-    </div>
-    <div>
-        <button on:click={() => player.stop()}>Stop</button>
-        <button on:click={() => player.pause()}>Pause</button>
-        <button on:click={() => player.resume()}>Resume</button>
-    </div>
-</div>
+        <h2>OPL3 emulation test</h2>
+        <p>This is a demo of <a href="https://github.com/doomjs/opl3">Doomjs's OPL3 emulation engine.</a></p>
 
-<TextMatrix width={36} height={10} bind:this={textMatrixInstance}/>
+        <Card class="p-4 sm:p-6 md:p-8">
+            <Button>Choose file<ChevronDownOutline class="ms-2 h-6 w-6 text-white dark:text-white" /></Button>
+            <Dropdown bind:isOpen simple>
+                {#each fileOptions as option }
+                    <DropdownItem
+                        class="w-full text-left"
+                        onclick={(e: Event) => { loadAndPlay(option.value); isOpen = false; }}
+                    >
+                        {option.label}
+                    </DropdownItem>
+                {/each}
+            </Dropdown>
+
+            <div>{counter}</div>
+            <!--<div>
+                <label for="fileUpload">Select a file:</label>
+                <input type="file" id="fileUpload" name="fileUpload"
+                    accept=".rad,.raw,.dro,.laa,.mus,.imf"
+                    onchange={(e: Event) => loadFile((e.target as any).files)}
+                >
+            </div>-->
+
+            <ButtonGroup class="*:ring-primary-700!">
+                <Button onclick={() => player.stop()}><StopOutline class="me-2 h-4 w-4" />Stop</Button>
+                <Button onclick={() => player.pause()}><PauseOutline class="me-2 h-4 w-4" />Pause</Button>
+                <Button onclick={() => player.resume()}><PlayOutline class="me-2 h-4 w-4" />Resume</Button>
+            </ButtonGroup>
+        </Card>
+    </div>
+
+    <!--<TextMatrix width={36} height={10} bind:this={textMatrixInstance}/>-->
+</section>
