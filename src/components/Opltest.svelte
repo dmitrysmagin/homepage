@@ -6,7 +6,8 @@
         Dropdown,
         DropdownItem,
         DropdownDivider,
-        DropdownHeader
+        DropdownHeader,
+        P
     } from "flowbite-svelte";
     import {
         ChevronDownOutline,
@@ -19,7 +20,7 @@
     // This component should be hydrated
     import { onMount } from "svelte";
 
-    let textMatrixInstance: any;
+    //let textMatrixInstance: any;
 
     let player: any = $state(null);
     let counter = $state("");
@@ -28,7 +29,7 @@
     const fileOptions = [
         { label: "title.raw", value: "/music/title.raw" },
         { label: "aditup_1.rad", value: "/music/aditup_1.rad" },
-        { label: "aditup_1.rad", value: "/music/aditup_2.rad" },
+        { label: "aditup_2.rad", value: "/music/aditup_2.rad" },
     ];
 
     function FileToArrayBuffer(file: File): Promise<ArrayBuffer> {
@@ -57,29 +58,14 @@
         }
     }
 
-    async function downloadBinaryFromUrl(url: string): Promise<ArrayBuffer> {
-        const response = await fetch(url);
-        const arrayBuffer = await response.arrayBuffer();
-
-        return arrayBuffer
-    }
-
     async function loadAndPlay(url: string) {
-        const data = await downloadBinaryFromUrl(url);
+        const data = await fetch(url).then((response) => response.arrayBuffer());
 
         player.play(data);
     }
 
     onMount(() => {
         player = new (window as any).OPL3.Player(null, { prebuffer: 3000, volume: 4 });
-
-        /*player.on('progress', function() {
-            counter = player.position + 'ms / ' + player.length + 'ms';
-        });
-
-        player.on('position', function(ms) {
-            counter = ms + 'ms / ' + player.length + 'ms';
-        });*/
 
         player.on("currentTime", (value: any) => {
             counter = `currentFrame: ${value.currentFrame}, currentTime: ${value.currentTime.toFixed(2)} s`;
@@ -104,35 +90,38 @@
 <section class="max-w-3xl mx-auto d-flex flex-row">
     <div>
         <h2>OPL3 emulation test</h2>
-        <p>This is a demo of <a href="https://github.com/doomjs/opl3">Doomjs's OPL3 emulation engine.</a></p>
+        <P size="lg">This is a demo of heavily modified <a href="https://github.com/doomjs/opl3">Doomjs's OPL3 emulation engine.</a></P>
 
         <Card class="p-4 sm:p-6 md:p-8">
-            <Button>Choose file<ChevronDownOutline class="ms-2 h-6 w-6 text-white dark:text-white" /></Button>
-            <Dropdown bind:isOpen simple>
-                {#each fileOptions as option }
-                    <DropdownItem
-                        class="w-full text-left"
-                        onclick={(e: Event) => { loadAndPlay(option.value); isOpen = false; }}
+            <div class="flex flex-col items-start gap-[8px]">
+                <Button>Choose file<ChevronDownOutline class="ms-2 h-6 w-6 text-white dark:text-white" /></Button>
+                <Dropdown bind:isOpen simple>
+                    {#each fileOptions as option }
+                        <DropdownItem
+                            class="w-full text-left"
+                            onclick={(e: Event) => { loadAndPlay(option.value); isOpen = false; }}
+                        >
+                            {option.label}
+                        </DropdownItem>
+                    {/each}
+                </Dropdown>
+
+                <!--<div>
+                    <label for="fileUpload">Select a file:</label>
+                    <input type="file" id="fileUpload" name="fileUpload"
+                        accept=".rad,.raw,.dro,.laa,.mus,.imf"
+                        onchange={(e: Event) => loadFile((e.target as any).files)}
                     >
-                        {option.label}
-                    </DropdownItem>
-                {/each}
-            </Dropdown>
+                </div>-->
+
+                <ButtonGroup class="*:ring-primary-700!">
+                    <Button onclick={() => player.stop()}><StopOutline class="me-2 h-4 w-4" />Stop</Button>
+                    <Button onclick={() => player.pause()}><PauseOutline class="me-2 h-4 w-4" />Pause</Button>
+                    <Button onclick={() => player.resume()}><PlayOutline class="me-2 h-4 w-4" />Resume</Button>
+                </ButtonGroup>
+            </div>
 
             <div>{counter}</div>
-            <!--<div>
-                <label for="fileUpload">Select a file:</label>
-                <input type="file" id="fileUpload" name="fileUpload"
-                    accept=".rad,.raw,.dro,.laa,.mus,.imf"
-                    onchange={(e: Event) => loadFile((e.target as any).files)}
-                >
-            </div>-->
-
-            <ButtonGroup class="*:ring-primary-700!">
-                <Button onclick={() => player.stop()}><StopOutline class="me-2 h-4 w-4" />Stop</Button>
-                <Button onclick={() => player.pause()}><PauseOutline class="me-2 h-4 w-4" />Pause</Button>
-                <Button onclick={() => player.resume()}><PlayOutline class="me-2 h-4 w-4" />Resume</Button>
-            </ButtonGroup>
         </Card>
     </div>
 

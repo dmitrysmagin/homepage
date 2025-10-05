@@ -44,7 +44,7 @@
 
 @layer base {
     body {
-        color: #333;
+        /*color: #333;*/
     }
 
     /* disable chrome cancel button */
