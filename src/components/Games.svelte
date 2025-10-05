@@ -64,7 +64,7 @@
     }
 </style>
 
-<section>
+<section class="max-w-3xl mx-auto d-flex flex-row">
     <div class="panel">
         <div class="left_panel">
             <img src="/img/lastmission00.png" alt="screenshot" width="320" />
