@@ -59,9 +59,15 @@
     }
 
     async function loadAndPlay(url: string) {
-        const data = await fetch(url).then((response) => response.arrayBuffer());
+        let data: ArrayBuffer;
 
-        player.play(data);
+        try {
+            data = await fetch(url).then((response) => response.arrayBuffer());
+
+            player.play(data);
+        } catch (error) {
+
+        }
     }
 
     onMount(() => {

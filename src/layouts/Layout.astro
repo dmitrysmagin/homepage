@@ -1,5 +1,7 @@
 ---
-import HeaderMenu from "src/components/HeaderMenu.astro";
+import HeaderMenu from "src/components/Navigation/HeaderMenu.astro";
+import NavigationTop from "src/components/Navigation/NavigationTop.svelte";
+import NavigationBottom from "src/components/Navigation/NavigationBottom.svelte";
 import "src/styles/global.css";
 import "src/styles/style.scss";
 
@@ -71,15 +73,14 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
         <script is:inline src="/js/flowbite.min.js"></script>
     </head>
     <body>
-        <HeaderMenu />
+        <NavigationTop client:load />
+        <!--<HeaderMenu /> -->
 
         <main class="container mx-auto">
             <slot />
         </main>
 
-        <footer class="py-5 mt-4 text-center text-[#f4f7fb] bg-[#06395a]">
-            Built with fabulous <a class="text-inherit" href="https://astro.build/">Astro</a> framework
-        </footer>
+        <NavigationBottom />
 
     </body>
 </html>
