@@ -15,7 +15,7 @@
 </script>
 
 <header class="relative h-[96px] ">
-    <Navbar class="fixed bg-white border-b border-gray-200" navContainerClass="justify-end md:justify-center">
+    <Navbar class="fixed bg-white border-b border-gray-200 z-999" navContainerClass="justify-end md:justify-center">
         <!--<NavBrand href="/"></NavBrand>-->
         <NavHamburger />
         <NavUl {activeUrl}>
