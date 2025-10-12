@@ -1,6 +1,5 @@
 ---
 import HeaderMenu from "src/components/Navigation/HeaderMenu.astro";
-import NavigationTop from "src/components/Navigation/NavigationTop.svelte";
 import NavigationBottom from "src/components/Navigation/NavigationBottom.svelte";
 import "src/styles/global.css";
 import "src/styles/style.scss";
@@ -73,8 +72,7 @@ const article_modified_time = articleInfo ? new Date(articleInfo?.updatedAt || "
         <script is:inline src="/js/flowbite.min.js"></script>
     </head>
     <body>
-        <NavigationTop client:load />
-        <!--<HeaderMenu /> -->
+        <HeaderMenu />
 
         <main class="container mx-auto min-h-[calc(100vh_-_160px)]">
             <slot />
