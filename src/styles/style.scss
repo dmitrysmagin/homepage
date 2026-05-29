@@ -1,36 +1,26 @@
+@reference "src/styles/global.css";
+
 #blog-post {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #e1e4e8;
-    border-radius: 6px;
+    @apply px-[10px] my-[10px] border border-[#e1e4e8] rounded-md;
 
     a {
-        color: blue;
-        text-decoration: underline;
+        @apply text-blue-500 underline;
     }
 
     img {
-        width: 600px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 4px;
-        margin-bottom: 1rem;
+        @apply w-[600px] block mx-auto rounded-sm mb-4;
     }
 
     pre {
-        padding: 1rem;
+        @apply p-4;
     }
 
     ol, ul, menu {
-        margin-left: 16px;
-        list-style: disc;
+        @apply ml-4 list-disc;
     }
 
     p, ul, ol, pre {
-        margin-bottom: 1.2rem;
+        @apply mb-5;
     }
 
     hr {
@@ -44,16 +34,14 @@
     }
 
     table {
-        margin-left: auto;
-        margin-right: auto;
+        @apply mx-auto;
         border-spacing: 0;
         border-collapse: collapse;
     }
 
     table th,
     table td {
-        padding: 6px 13px;
-        border: 1px solid #c3c8cc;
+        @apply p-1.5 px-3 border border-[#c3c8cc];
     }
 
     table tr:nth-child(2n),
@@ -63,10 +51,9 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    @apply my-4;
 }
 
 p {
-    margin-bottom: 1.2rem;
+    @apply mb-5;
 }

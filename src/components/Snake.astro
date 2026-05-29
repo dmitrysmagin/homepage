@@ -4,12 +4,12 @@
 
 <snake-game class="block text-center">
     <p>
-        This game is taken from: <a href="https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4">here</a>.
+        This game is taken from: <a href="https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4" class="text-blue-500 underline">here</a>.
     </p>
     <p>Press button to run js code!</p>
-    <canvas width="400" height="400" id="game" style="display: none;"></canvas>
+    <canvas width="400" height="400" id="game" class="hidden border-2 border-purple-600 rounded-lg mx-auto"></canvas>
     <Button simple id="button_run">RUN</Button>
-    <Button simple id="button_stop" style="display: none;">STOP</Button>
+    <Button simple id="button_stop" class="hidden">STOP</Button>
 </snake-game>
 
 <style>
@@ -17,17 +17,6 @@
         image-rendering: -moz-crisp-edges;
         image-rendering: -webkit-crisp-edges;
         image-rendering: pixelated;
-        /*width: 600px;
-        height: 600px;*/
-        border: 2px solid purple;
-        border-radius: 8px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    a {
-        color: blue;
-        text-decoration: underline;
     }
 </style>
 
@@ -48,16 +37,16 @@
             button_run?.addEventListener("click", function() {
                 if (!snake.running) {
                     snake.run();
-                    button_run.style.display = "none";
-                    button_stop.style.display = "";
+                    button_run.classList.add("hidden");
+                    button_stop.classList.remove("hidden");
                 }
             });
 
             button_stop.addEventListener("click", function() {
                 if (snake.running) {
                     snake.stop();
-                    button_run.style.display = "";
-                    button_stop.style.display = "none";
+                    button_run.classList.remove("hidden");
+                    button_stop.classList.add("hidden");
                 }
             });
         }

@@ -1,0 +1,98 @@
+---
+const projects = [
+    {
+        title: "Adlib Tracker II",
+        description: "A feature-rich FM music tracker for the OPL3 chip found in Sound Blaster cards. Ported the tracker to FreePascal/SDL, enabling it to run on modern systems.",
+        image: "https://adlibtracker.net/images/at2_01.png",
+        link: "https://adlibtracker.net/",
+        linkText: "Visit Site",
+        color: "from-blue-500 to-purple-600"
+    },
+    {
+        title: "GCW Zero",
+        description: "An open-source gaming handheld built by gamers for gamers. Contributed to the OpenDingux firmware and developed software for the device.",
+        image: "https://web.archive.org/web/20221207170748im_/http://www.gcw-zero.com/images/banner_2.png",
+        link: "https://web.archive.org/web/20221005105454/http://gcw-zero.com/",
+        linkText: "Archive",
+        color: "from-green-500 to-teal-600"
+    },
+    {
+        title: "The Last Mission Remake",
+        description: "A modern remake of the classic 1987 side-view arcade game by Opera Soft. Rewrote the game engine in C with SDL for cross-platform support.",
+        image: "/img/lastmission01.png",
+        link: "https://lastmission.sourceforge.net/",
+        linkText: "SourceForge",
+        color: "from-red-500 to-orange-600"
+    },
+    {
+        title: "OpenDingux Development",
+        description: "Development and documentation for OpenDingux firmware on Ingenic JZ47xx devices including Dingoo A320, Ritmix RZX-50, and GCW Zero.",
+        image: "",
+        link: "https://web.archive.org/web/20200217125351/http://prizma.bmstu.ru/~exmortis/",
+        linkText: "Archive",
+        color: "from-yellow-500 to-amber-600"
+    },
+    {
+        title: "ExMortis",
+        description: "A collection of development articles and tools for OpenDingux handheld gaming devices, focusing on firmware hacking and emulation.",
+        image: "",
+        link: "https://exmortis.narod.ru/",
+        linkText: "Visit Site",
+        color: "from-pink-500 to-rose-600"
+    }
+];
+---
+
+<section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
+            Involvement in other projects
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project) => (
+                <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
+                >
+                    <div class={`aspect-video overflow-hidden bg-gradient-to-br ${project.color}`}>
+                        {project.image && (
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-90"
+                                loading="lazy"
+                                onerror="this.style.display='none'"
+                            />
+                        )}
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                            {project.title}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+                            {project.description}
+                        </p>
+                        <span class="inline-flex items-center text-primary-600 dark:text-primary-400 text-sm font-medium group-hover:underline">
+                            {project.linkText}
+                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>

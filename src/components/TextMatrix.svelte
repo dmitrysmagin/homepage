@@ -34,25 +34,10 @@
     printAscii(0, 4, "┃ 01 ┃··· •• ▪▪▪ 203│");
 </script>
 
-<style>
-    .text-matrix-container {
-        font-family: "Consolas", monospace, monospace;
-        font-size: 18px;
-        line-height: normal;
-        text-align: center;
-    }
-    .cell {
-        transition: background-color 0.4s ease;
-        color: wheat;
-        background-color: #6e8bb1;
-    }
-    .cell:hover { background-color: red; }
-</style>
-
-<div class="text-matrix-container">
+<div class="font-['Consolas',monospace] text-lg leading-normal text-center">
     {#each matrix as row}
         {#each row as col}
-            <span class="cell" bind:this={col.element}>{@html col.contents}</span>
+            <span class="transition-colors duration-[400ms] ease-in text-yellow-200 bg-[#6e8bb1] hover:bg-red-600" bind:this={col.element}>{@html col.contents}</span>
         {/each}
         <br/>
     {/each}

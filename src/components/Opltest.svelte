@@ -86,17 +86,10 @@
     <script id="opl3" type="text/javascript" src="/js/opl3.js"></script>
 </svelte:head-->
 
-<style>
-    a {
-        color: blue;
-        text-decoration: underline;
-    }
-</style>
-
 <section class="max-w-3xl mx-auto d-flex flex-row">
     <div>
         <h2>OPL3 emulation test</h2>
-        <P size="lg">This is a demo of heavily modified <a href="https://github.com/doomjs/opl3">Doomjs's OPL3 emulation engine.</a></P>
+        <P size="lg">This is a demo of heavily modified <a href="https://github.com/doomjs/opl3" class="text-blue-500 underline">Doomjs's OPL3 emulation engine.</a></P>
 
         <Card class="p-4 sm:p-6 md:p-8">
             <div class="flex flex-col items-start gap-[8px]">
