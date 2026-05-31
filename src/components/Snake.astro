@@ -8,8 +8,9 @@
     </p>
     <p>Press button to run js code!</p>
     <canvas width="400" height="400" id="game" class="hidden border-2 border-purple-600 rounded-lg mx-auto"></canvas>
-    <Button simple id="button_run">RUN</Button>
-    <Button simple id="button_stop" class="hidden">STOP</Button>
+
+    <button type="button" id="button_run">RUN</button>
+    <button type="button" id="button_stop" class="hidden">STOP</button>
 </snake-game>
 
 <style>
@@ -21,7 +22,7 @@
 </style>
 
 <script>
-    import Game from "./snake.js";
+    import Game from "./snake.ts";
 
     class SnakeGame extends HTMLElement {
         constructor() {
@@ -29,12 +30,16 @@
         }
 
         connectedCallback() {
-            const snake = new Game(this.querySelector('#game'));
+            const canvas = this.querySelector<HTMLCanvasElement>('#game');
+            if (!canvas) return;
 
-            const button_run = this.querySelector('#button_run') as HTMLButtonElement;
-            const button_stop = this.querySelector('#button_stop') as HTMLButtonElement;
+            const snake = new Game(canvas);
 
-            button_run?.addEventListener("click", function() {
+            const button_run = this.querySelector<HTMLButtonElement>('#button_run');
+            const button_stop = this.querySelector<HTMLButtonElement>('#button_stop');
+            if (!button_run || !button_stop) return;
+
+            button_run.addEventListener("click", function() {
                 if (!snake.running) {
                     snake.run();
                     button_run.classList.add("hidden");
@@ -58,3 +63,4 @@
     if (window.customElements.get("snake-game") === undefined)
         window.customElements.define("snake-game", SnakeGame);
 </script>
+

@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 
 import svelte from '@astrojs/svelte';
-import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import compress from "@playform/compress";
 
@@ -28,7 +27,6 @@ export default defineConfig({
     server: { port: server_port, host: true },
     integrations: [
         svelte(),
-        react(),
         sitemap(),
         robots(),
         purgecss({
