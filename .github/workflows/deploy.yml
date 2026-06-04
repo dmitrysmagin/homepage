@@ -32,5 +32,5 @@ jobs:
         with:
           deploy_key: ${{ secrets.DEPLOY_KEY }}
           external_repository: dmitrysmagin/dmitrysmagin.github.io
-          publish_branch: main
+          publish_branch: master
           publish_dir: ./dist
