@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to dmitrysmagin.github.io
 
 on:
   push:
@@ -10,13 +10,6 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -34,12 +27,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to dmitrysmagin.github.io
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: dist
-          overwrite: true
-
-      - name: Deploy to Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          external_repository: dmitrysmagin/dmitrysmagin.github.io
+          publish_branch: main
+          publish_dir: ./dist
